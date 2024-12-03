@@ -1,74 +1,51 @@
+## Servidor WebSocket Spring Boot
 
-## Servidor WebSocket Simples em Java
+Este documento fornece informações sobre um servidor WebSocket simples implementado com Spring Boot e Java 23.
 
-Este documento fornece informações sobre um servidor WebSocket simples em Java, construído utilizando Java 23, Maven e as seguintes dependências:
+### Visão Geral
 
-* **jakarta.websocket-client-api:** Fornece a API Jakarta EE WebSocket para comunicação do lado do cliente. (Nota: Provavelmente incluída para fins de teste)
-* **tyrus-client:** Implementação Tyrus da API do cliente WebSocket.
-* **tyrus-container-grizzly-client:** Implementação do container Grizzly para o cliente Tyrus.
-* **tyrus-standalone-client** (Opcional): Fornece um cliente WebSocket autônomo para ambientes sem um servidor Java EE (dependência opcional).
+O servidor permite a comunicação bidirecional em tempo real entre clientes e o servidor através do protocolo WebSocket. Com Spring Boot, o desenvolvimento e a configuração do servidor WebSocket são simplificados.
 
-### Iniciando
+### Tecnologias Utilizadas
 
-**Pré-requisitos:**
+* **Spring Boot:** Framework de desenvolvimento rápido para aplicações Java baseadas em microsserviços.
+* **Spring WebSockets:** Módulo Spring Boot que fornece suporte para desenvolvimento de aplicações WebSocket.
 
-* Java Development Kit (JDK) 17 ou superior
-* Maven 3 ou superior
+### Dependências
 
-**Construindo:**
+O projeto utiliza a dependência `spring-boot-starter-websocket` do Spring Boot, que inclui todas as bibliotecas necessárias para implementar um servidor WebSocket básico.
 
-```bash
-mvn clean install
-```
+### Construindo e Executando
 
-Este comando baixa as dependências e constrói o projeto.
+1. **Pré-requisitos:**
+    * Java Development Kit (JDK) 17 ou superior
+    * Maven 3 ou superior
+2. **Clone o repositório:** Clone este repositório para sua máquina local.
+3. **Instale as dependências:** Execute o comando `mvn clean install` no diretório do projeto para baixar as dependências do projeto.
+4. **Execute o servidor:** Execute a classe principal do Spring Boot (geralmente `com.autonomous.SpringWebSocketServerApplication`) usando `java -jar target/spring-websocket-server-1.0-SNAPSHOT.jar` (substitua o nome do arquivo JAR pelo nome gerado durante a construção).
 
-**Executando o Servidor:**
+### Conectando um Cliente
 
-Existem duas formas principais de executar o servidor:
+Uma vez que o servidor esteja em execução, você pode conectar um cliente WebSocket a ele. Alguns exemplos de clientes incluem:
 
-1. **Executando uma classe principal (se aplicável):**
-   * Localize a classe principal responsável por iniciar o servidor (por exemplo, `MyWebSocketServer`).
-   * Compile a classe, se necessário.
-   * Execute a classe usando `java -cp target/classes:<caminho/para/jars/adicionais> MyWebSocketServer`.
-     * Substitua `<caminho/para/jars/adicionais>` pelo caminho para quaisquer arquivos JAR adicionais necessários para a implementação do seu servidor.
+* Aplicativos web desenvolvidos com JavaScript e bibliotecas WebSocket.
+* Clientes WebSocket de linha de comando dedicados.
 
-2. **Utilizando um IDE (recomendado):**
-   * Importe o projeto para seu IDE preferido (por exemplo, IntelliJ IDEA, Eclipse).
-   * Configure o IDE para executar a classe principal ou identifique a configuração de execução apropriada.
-   * Execute o servidor dentro do IDE.
+O endpoint para conexão com o servidor depende da sua implementação específica, mas geralmente segue o formato `ws://localhost:<porta>/<caminho>`. Por exemplo, se o endpoint for configurado no código do servidor e a porta for 8080, o cliente se conectaria usando `ws://localhost:8080/meu-websocket-endpoint`.
 
-**Conectando um Cliente:**
+### Personalização
 
-Uma vez que o servidor estiver em execução, você pode conectar um cliente WebSocket a ele. Você pode usar um aplicativo cliente dedicado ou utilizar as ferramentas de desenvolvedor do navegador. O URL do endpoint específico dependerá da implementação do seu servidor.
+* **Manipulação de mensagens:** Implemente métodos para lidar com mensagens recebidas dos clientes e enviar respostas.
+* **Gerenciamento de Sessões:** O Spring Boot gerencia automaticamente as sessões dos clientes conectados. Você pode acessar informações específicas da sessão para personalizar o comportamento do servidor.
+* **Segurança:** Implemente medidas de segurança (autenticação, autorização) para autenticar e autorizar clientes antes de permitir a conexão.
 
-**Exemplo de endpoint (substitua pelo seu endpoint real):**
+### Considerações
 
-```
-ws://localhost:8080/my-websocket-endpoint
-```
+* Este é um exemplo básico de servidor WebSocket.
+* Para aplicações de alta carga, considere otimizar o servidor para lidar com um grande número de conexões simultâneas.
+* Explore os recursos oficiais do Spring Boot e Spring WebSockets para aprender sobre funcionalidades mais avançadas.
 
-**Personalização:**
+### Contribuições
 
-Esta é uma implementação básica do servidor. Você pode personalizá-la para:
-
-* Manipular mensagens recebidas e enviar respostas.
-* Gerenciar múltiplos clientes conectados.
-* Implementar medidas de segurança (autenticação, autorização).
-* Integrar com outros sistemas.
-
-**Nota:**
-
-* A dependência `jakarta.websocket-client-api` provavelmente serve para fins de teste neste projeto do lado do servidor.
-
-### Licença
-
-(Especifique a licença utilizada pelo seu projeto, se aplicável).
-
-### Contribuindo
-
-(Forneça informações sobre como os usuários podem contribuir para o seu projeto, se aplicável).
-
-Este README fornece uma estrutura básica. Você pode personalizá-lo ainda mais para incluir informações adicionais, capturas de tela e exemplos específicos da implementação do seu servidor.
-```
+Contribuições são bem-vindas! Para contribuir, siga as orientações do Git e envie um pull request.
 
